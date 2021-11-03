@@ -1,7 +1,6 @@
 import * as Page from './pages';
+import { Footer, Navbar, SearchBox } from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import SearchBox from './components/SearchBox';
 
 function App() {
   return (
@@ -13,15 +12,16 @@ function App() {
           <Page.Home />
         </Route>
         <Route path='/programming'>
-          <Page.Programming />
+          <Page.SearchPage />
         </Route>
         <Route path='/covid-19'>
           <Page.Covid />
         </Route>
         <Route path='/saved'>
-          <Page.Detail />
+          <Page.Saved />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }
