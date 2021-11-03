@@ -6,6 +6,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  @apply bg-text-light;
+}
+
 .special-list {
   position: relative;
   text-align: center;

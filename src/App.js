@@ -19,7 +19,7 @@ function App() {
           <Page.Covid />
         </Route>
         <Route path='/saved'>
-          <Page.Saved />
+          <Page.Detail />
         </Route>
       </Switch>
     </Router>

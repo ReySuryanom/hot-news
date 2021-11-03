@@ -2,7 +2,7 @@ import { FaSearch } from 'react-icons/fa';
 
 function SearchBox() {
   return (
-    <section className='relative py-16 bg-text-light'>
+    <section className='relative py-16 bg-none'>
       <div className='relative w-10/12 h-auto mx-auto'>
         <input
           className='min-w-full px-8 py-4 rounded-full shadow-md outline-none'

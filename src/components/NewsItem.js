@@ -1,37 +1,31 @@
 import { FaBookmark } from 'react-icons/fa';
-import { truncate } from '../helper';
-import { useFetch } from '../hook/useFetch';
+import { checkDefaultImg, truncate } from '../helper';
 
-function NewsItem({ title, source: { id, name }, urlToImage }) {
-  // const news = [0];
-  // const title =
-  //   'EMERGING MARKETS-Indonesia, Philippine shares scale new highs, track U.S. rebound - Routers';
-  // const isLoading = true;
-
-  // console.log(useFetch());
-
-  // if (isLoading) {
-  //   return <div />;
-  // }
+function NewsItem({
+  headlines,
+  aside,
+  title,
+  source: { id, name },
+  urlToImage,
+  margin = 80,
+}) {
+  // Styles (Classname utilities)
+  const img = checkDefaultImg(urlToImage) && 'border-2 border-primary-light';
+  const article = !!aside ? 'flex' : !!headlines ? 'w-full' : 'w-56';
+  const dl = !!aside
+    ? 'w-3/6 pl-3 flex flex-col justify-between'
+    : !!headlines && 'relative mx-auto w-11/12 bg-white p-5 -mt-10 z-10';
 
   return (
-    <article className='w-56'>
-      <div className='relative'>
-        <img
-          src={
-            urlToImage ||
-            'https://s1.reutersmedia.net/resources_v2/images/rcom-default.png?w=800'
-          }
-          alt={title}
-        />
-        <button className='absolute w-8 h-8 bg-white rounded-full top-2 right-2'>
-          <FaBookmark className='absolute text-gray-500 text-md top-2 right-2' />
+    <article className={article}>
+      <div className={`mb-0.5 relative ${!!aside && 'w-3/6'}`}>
+        <img className={img} src={urlToImage} alt={title} />
+        <button className='absolute w-8 h-8 bg-white border-2 rounded-full border-text-gray top-2 right-2'>
+          <FaBookmark className='absolute text-gray-500 right-1.5 text-md top-1.5' />
         </button>
       </div>
-      <dl className='mt-1'>
-        <dt className='text-sm font-medium'>
-          {truncate(title) || truncate(title)}
-        </dt>
+      <dl className={dl}>
+        <dt className='text-sm font-medium'>{truncate(title, margin)}</dt>
         <dd className='text-sm font-bold text-primary-dark'>
           {id || 'Reuters'}
           <span className='font-medium text-text-gray'> - {name}</span>

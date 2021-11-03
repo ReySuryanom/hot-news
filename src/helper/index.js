@@ -5,4 +5,20 @@ export const pages = [
   { route: '/saved', name: 'Saved' },
 ];
 
-export const truncate = (n) => (n.length > 80 ? `${n.substring(0, 80)}...` : n);
+export const truncate = (text, length) =>
+  text.length > length ? `${text.substring(0, length)}...` : text;
+
+export const checkDefaultImg = (url) =>
+  !!url.match(/(rcom-default|reuters-default)/g);
+
+export const formattedNews = (arr) => {
+  const newsPerPages = 5;
+  const numberOfPages = Math.ceil(arr.length / newsPerPages);
+
+  const newArray = Array.from({ length: numberOfPages }, (_, index) => {
+    const start = index * newsPerPages;
+    return arr.slice(start, start + newsPerPages);
+  });
+
+  return newArray;
+};
