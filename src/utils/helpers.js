@@ -1,15 +1,9 @@
-export const pages = [
-  { route: '/', name: 'Indonesia' },
-  { route: '/programming', name: 'Programming' },
-  { route: '/covid-19', name: 'Covid-19' },
-  { route: '/saved', name: 'Saved' },
-];
+import { regex } from './constants';
 
 export const truncate = (text, length) =>
   text.length > length ? `${text.substring(0, length)}...` : text;
 
-export const checkDefaultImg = (url) =>
-  !!url.match(/(rcom-default|reuters-default)/g);
+export const checkDefaultImg = (url) => !!url.match(regex);
 
 export const formattedNews = (arr) => {
   const newsPerPages = 5;

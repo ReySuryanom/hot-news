@@ -1,7 +1,7 @@
 import React from 'react';
 import { Aside, Loading, NewsItem, NewsLists } from '../components';
-import { formattedNews } from '../helper';
 import { useFetch } from '../hook/useFetch';
+import { formattedNews } from '../utils/helpers';
 
 function Home() {
   const { news, isLoading } = useFetch();

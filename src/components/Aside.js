@@ -1,5 +1,4 @@
-import NewsItem from './NewsItem';
-import NewsLists from './NewsLists';
+import { NewsItem, NewsLists } from '.';
 
 function Aside({ lists }) {
   return (

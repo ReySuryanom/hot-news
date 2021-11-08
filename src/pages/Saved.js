@@ -1,6 +1,6 @@
 import { Loading, SavedItem } from '../components';
-import { formattedNews } from '../helper';
 import { useFetch } from '../hook/useFetch';
+import { formattedNews } from '../utils/helpers';
 
 function Saved() {
   const { news, isLoading } = useFetch();

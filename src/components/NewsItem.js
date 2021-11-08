@@ -1,5 +1,5 @@
 import { FaBookmark } from 'react-icons/fa';
-import { checkDefaultImg, truncate } from '../helper';
+import { checkDefaultImg, truncate } from '../utils/helpers';
 
 function NewsItem({
   headlines,
@@ -24,9 +24,7 @@ function NewsItem({
   const dt = `font-medium ${!!search ? 'text-xl' : 'text-sm'}`;
   const justifyFixed = !!aside
     ? ' justify-between'
-    : !!search
-    ? ' justify-center bg-text-light w-full pl-10'
-    : undefined;
+    : !!search && ' justify-center bg-text-light w-full pl-10';
 
   return (
     <article className={article}>
