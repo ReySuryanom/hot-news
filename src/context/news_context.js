@@ -13,4 +13,4 @@ export const NewsProvider = ({ children, initialState, reducer }) => {
   );
 };
 
-export const useProductsContext = () => useContext(NewsContext);
+export const useNewsContext = () => useContext(NewsContext);

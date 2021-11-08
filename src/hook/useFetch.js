@@ -1,27 +1,30 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { GET_NEWS, SET_LOADING } from '../actions';
 import { CONFIG } from '../api';
+import { useNewsContext } from '../context/news_context';
 
 const { PARAMS, BASE_URL, ENDPOINT } = CONFIG;
 
 export const useFetch = () => {
-  const [news, setNews] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [state, dispatch] = useNewsContext();
+  const { news, isLoading, query } = state;
 
   useEffect(() => {
+    dispatch({ type: SET_LOADING, payload: true });
     axios
-      .get(`${BASE_URL}${ENDPOINT}${PARAMS}`)
+      .get(`${BASE_URL}${ENDPOINT}${PARAMS}${query}`)
       .then(({ data }) => {
         const { articles } = data;
 
-        setIsLoading(true);
-        setNews(articles);
-        setIsLoading(false);
+        dispatch({ type: GET_NEWS, payload: articles });
+        dispatch({ type: SET_LOADING, payload: false });
       })
       .catch((error) => {
+        dispatch({ type: SET_LOADING, payload: false });
         throw new Error(error);
       });
-  }, []);
+  }, [query, dispatch]);
 
   return { news, isLoading };
 };

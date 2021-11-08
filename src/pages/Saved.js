@@ -1,13 +1,11 @@
 import { Loading, SavedItem } from '../components';
-import { useFetch } from '../hook/useFetch';
-import { formattedNews } from '../utils/helpers';
+import { useNewsContext } from '../context/news_context';
 
 function Saved() {
-  const { news, isLoading } = useFetch();
+  const [state] = useNewsContext();
+  const { news, isLoading } = state;
 
   if (isLoading) return <Loading />;
-
-  const mergedArray = formattedNews(news);
 
   return (
     <section className='py-12 bg-white px-28'>
@@ -20,7 +18,7 @@ function Saved() {
           </tr>
         </thead>
         <tbody>
-          {mergedArray[0].map((item, index) => (
+          {news.map((item, index) => (
             <SavedItem key={item.url} index={index} {...item} />
           ))}
         </tbody>

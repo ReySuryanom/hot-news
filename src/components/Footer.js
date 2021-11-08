@@ -1,8 +1,14 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { useNewsContext } from '../context/news_context';
 
 function Footer() {
+  const [state] = useNewsContext();
+  const style = `flex justify-around p-16 text-lg text-white bg-primary-dark ${
+    state.isLoading && 'mt-20'
+  }`;
+
   return (
-    <footer className='flex justify-around p-16 text-lg text-white bg-primary-dark'>
+    <footer className={style}>
       <div className='self-center text-center'>
         <h4 className='mb-4 text-xl font-extrabold'>HotNews.</h4>
         <div className='flex justify-between w-40 text-3xl'>

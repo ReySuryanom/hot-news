@@ -2,7 +2,7 @@ import { Loading, NewsItem, NewsLists } from '../components';
 import { useNewsContext } from '../context/news_context';
 import { formattedNews } from '../utils/helpers';
 
-function SearchPage() {
+function SpecialPages() {
   const [state] = useNewsContext();
   const { news, isLoading, query } = state;
 
@@ -23,4 +23,4 @@ function SearchPage() {
   );
 }
 
-export default SearchPage;
+export default SpecialPages;

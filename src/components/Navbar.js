@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import { TOGGLE_NAVBAR } from '../actions';
-import { useProductsContext } from '../context/news_context';
+import { SET_QUERY_SEARCH, TOGGLE_NAVBAR } from '../actions';
+import { useNewsContext } from '../context/news_context';
 import { pages } from '../utils/constants';
 
 export default function Navbar() {
-  const [state, dispatch] = useProductsContext();
+  const [state, dispatch] = useNewsContext();
   console.log(state);
 
-  const toggleNavbar = (page) => {
+  const toggleNavbar = (page, name) => {
     dispatch({ type: TOGGLE_NAVBAR, payload: page });
+    dispatch({ type: SET_QUERY_SEARCH, payload: name });
   };
 
   return (
@@ -20,7 +21,7 @@ export default function Navbar() {
 
           return (
             <li className={`special-list ${activePage}`} key={index}>
-              <Link to={route} onClick={() => toggleNavbar(index)}>
+              <Link to={route} onClick={() => toggleNavbar(index, name)}>
                 {name}
               </Link>
             </li>

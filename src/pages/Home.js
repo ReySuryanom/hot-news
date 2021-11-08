@@ -1,10 +1,11 @@
 import React from 'react';
 import { Aside, Loading, NewsItem, NewsLists } from '../components';
-import { useFetch } from '../hook/useFetch';
+import { useNewsContext } from '../context/news_context';
 import { formattedNews } from '../utils/helpers';
 
 function Home() {
-  const { news, isLoading } = useFetch();
+  const [state] = useNewsContext();
+  const { news, isLoading, query } = state;
 
   if (isLoading) return <Loading />;
 
@@ -13,7 +14,7 @@ function Home() {
   return (
     <main>
       <div className='p-12 bg-white'>
-        <h2 className='heading-2'>INDONESIA NEWS</h2>
+        <h2 className='heading-2'>{query} NEWS</h2>
         <span className='heading-border-2' />
         <h3 className='heading-3'>Berita Utama</h3>
         <span className='heading-border-3' />

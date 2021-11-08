@@ -1,7 +1,7 @@
 export const pages = [
   { route: '/', name: 'Indonesia' },
   { route: '/programming', name: 'Programming' },
-  { route: '/covid-19', name: 'Covid-19' },
+  { route: '/covid', name: 'Covid-19' },
   { route: '/saved', name: 'Saved' },
 ];
 

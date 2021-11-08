@@ -1,9 +1,16 @@
-import { SET_QUERY_SEARCH, TOGGLE_NAVBAR, UPDATE_NEWS } from '../actions';
+import {
+  SET_QUERY_SEARCH,
+  TOGGLE_NAVBAR,
+  ADD_TO_SAVED_NEWS,
+  GET_NEWS,
+  SET_LOADING,
+} from '../actions';
 
 export const initialState = {
   news: [],
   saved_news: [],
-  query: '',
+  query: 'indonesia',
+  isLoading: true,
   pages: 0,
 };
 
@@ -18,13 +25,25 @@ export const news_reducer = (state, action) => {
     case SET_QUERY_SEARCH:
       return {
         ...state,
-        query: action,
+        query: action.payload,
       };
 
-    case UPDATE_NEWS:
+    case SET_LOADING:
       return {
         ...state,
-        pages: action,
+        isLoading: action.payload,
+      };
+
+    case GET_NEWS:
+      return {
+        ...state,
+        news: action.payload,
+      };
+
+    case ADD_TO_SAVED_NEWS:
+      return {
+        ...state,
+        saved_news: [...state.saved_news, action.payload],
       };
 
     default:
