@@ -41,9 +41,19 @@ export const news_reducer = (state, action) => {
       };
 
     case ADD_TO_SAVED_NEWS:
+      const news = action.payload;
+      const checkIfNewsAlreadySaved = state.saved_news.some(
+        (item) => item.publishedAt === news.publishedAt
+      );
+      const removeNews = state.saved_news.filter(
+        (item) => item.publishedAt !== news.publishedAt
+      );
+      const updatedNews = checkIfNewsAlreadySaved
+        ? removeNews
+        : [...state.saved_news, news];
       return {
         ...state,
-        saved_news: [...state.saved_news, action.payload],
+        saved_news: updatedNews,
       };
 
     default:

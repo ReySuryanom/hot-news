@@ -3,9 +3,18 @@ import { useNewsContext } from '../context/news_context';
 
 function Saved() {
   const [state] = useNewsContext();
-  const { news, isLoading } = state;
+  const { saved_news, isLoading } = state;
 
   if (isLoading) return <Loading />;
+  const emptyMessage = (
+    <tr>
+      <td colSpan={3}>
+        <p className='p-3 text-lg font-medium text-center text-gray-600'>
+          Belum ada berita favorite, pilihlah berita favoritmu.
+        </p>
+      </td>
+    </tr>
+  );
 
   return (
     <section className='py-12 bg-white px-28'>
@@ -18,9 +27,11 @@ function Saved() {
           </tr>
         </thead>
         <tbody>
-          {news.map((item, index) => (
-            <SavedItem key={item.publishedAt} index={index} {...item} />
-          ))}
+          {saved_news.length !== 0
+            ? saved_news.map((item, index) => (
+                <SavedItem key={item.publishedAt} index={index} {...item} />
+              ))
+            : emptyMessage}
         </tbody>
       </table>
     </section>

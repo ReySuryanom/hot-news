@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { GET_NEWS, SET_LOADING } from '../actions';
 import { CONFIG } from '../api';
 import { useNewsContext } from '../context/news_context';
@@ -10,15 +10,11 @@ export const useFetch = () => {
   const [state, dispatch] = useNewsContext();
   const { news, isLoading, query } = state;
 
-  useEffect(() => {
+  const fetchNews = useCallback(() => {
     dispatch({ type: SET_LOADING, payload: true });
     axios
       .get(`${BASE_URL}${ENDPOINT}${PARAMS}${query}`)
       .then(({ data }) => {
-        const x = new Date().toISOString();
-        const y = new Date().toDateString();
-        const z = new Date().toLocaleTimeString();
-        console.log(x);
         const { articles } = data;
 
         dispatch({ type: GET_NEWS, payload: articles });
@@ -29,6 +25,10 @@ export const useFetch = () => {
         throw new Error(error);
       });
   }, [query, dispatch]);
+
+  useEffect(() => {
+    fetchNews();
+  }, [fetchNews]);
 
   return { news, isLoading };
 };

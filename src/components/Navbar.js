@@ -5,7 +5,6 @@ import { pages } from '../utils/constants';
 
 export default function Navbar() {
   const [state, dispatch] = useNewsContext();
-  console.log(state);
 
   const toggleNavbar = (page, name) => {
     dispatch({ type: TOGGLE_NAVBAR, payload: page });
