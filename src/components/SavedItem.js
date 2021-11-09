@@ -2,7 +2,7 @@ function SavedItem({ index, source: { id, name }, title, description, url }) {
   return (
     <tr className={index % 2 === 0 ? 'bg-text-light' : 'bg-white'}>
       <td className='pl-5'>
-        <p>{`${id} - ${name}`}</p>
+        <p>{`${id || 'unknown'} - ${name}`}</p>
         <a
           href={url}
           className='font-semibold underline text-primary-dark'

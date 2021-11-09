@@ -15,6 +15,10 @@ export const useFetch = () => {
     axios
       .get(`${BASE_URL}${ENDPOINT}${PARAMS}${query}`)
       .then(({ data }) => {
+        const x = new Date().toISOString();
+        const y = new Date().toDateString();
+        const z = new Date().toLocaleTimeString();
+        console.log(x);
         const { articles } = data;
 
         dispatch({ type: GET_NEWS, payload: articles });

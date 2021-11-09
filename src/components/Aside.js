@@ -7,7 +7,7 @@ function Aside({ lists }) {
       <span className='heading-border-3' />
       <NewsLists column>
         {lists.map((item) => (
-          <NewsItem key={item.url} {...item} aside />
+          <NewsItem {...item} key={item.publishedAt} aside />
         ))}
       </NewsLists>
     </aside>

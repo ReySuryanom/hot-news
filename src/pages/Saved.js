@@ -19,7 +19,7 @@ function Saved() {
         </thead>
         <tbody>
           {news.map((item, index) => (
-            <SavedItem key={item.url} index={index} {...item} />
+            <SavedItem key={item.publishedAt} index={index} {...item} />
           ))}
         </tbody>
       </table>
