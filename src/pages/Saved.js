@@ -29,7 +29,7 @@ function Saved() {
         <tbody>
           {saved_news.length !== 0
             ? saved_news.map((item, index) => (
-                <SavedItem key={item.publishedAt} index={index} {...item} />
+                <SavedItem key={item.url} index={index} {...item} />
               ))
             : emptyMessage}
         </tbody>

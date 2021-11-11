@@ -35,7 +35,7 @@ function NewsItem({
     dispatch({ type: ADD_TO_SAVED_NEWS, payload: newsItem });
   };
 
-  const test = state.saved_news.some((item) => item.publishedAt === publishedAt)
+  const test = state.saved_news.some((item) => item.url === url)
     ? 'text-primary-light'
     : 'text-gray-500';
 

@@ -20,7 +20,7 @@ function Home() {
         <span className='heading-border-3' />
         <NewsLists>
           {mergedArray[0].map((item) => (
-            <NewsItem {...item} key={item.publishedAt} />
+            <NewsItem {...item} key={item.url} />
           ))}
         </NewsLists>
       </div>
@@ -28,12 +28,7 @@ function Home() {
         <section className='w-6/12'>
           <NewsLists column>
             {mergedArray[2].map((item) => (
-              <NewsItem
-                {...item}
-                key={item.publishedAt}
-                margin={68}
-                headlines
-              />
+              <NewsItem {...item} key={item.url} margin={68} headlines />
             ))}
           </NewsLists>
         </section>

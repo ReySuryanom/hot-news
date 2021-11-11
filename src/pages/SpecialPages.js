@@ -16,7 +16,7 @@ function SpecialPages() {
       <span className='heading-border-2' />
       <NewsLists column className='w-full p-20 space-y-10'>
         {mergedArray[0].map((item) => (
-          <NewsItem key={item.publishedAt} {...item} margin={130} search />
+          <NewsItem key={item.url} {...item} margin={130} search />
         ))}
       </NewsLists>
     </main>

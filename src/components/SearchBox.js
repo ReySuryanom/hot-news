@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useHistory } from 'react-router';
-import { SET_QUERY_SEARCH, TOGGLE_NAVBAR } from '../actions';
+import { SET_LOADING, SET_QUERY_SEARCH, TOGGLE_NAVBAR } from '../actions';
 import { useNewsContext } from '../context/news_context';
 
 function SearchBox() {
@@ -13,6 +13,7 @@ function SearchBox() {
 
   const searchButton = (event) => {
     if (event.key === 'Enter' || event['type'] === 'click') {
+      dispatch({ type: SET_LOADING, payload: true });
       history.push(`/search/${text}`);
       dispatch({ type: SET_QUERY_SEARCH, payload: text });
       dispatch({ type: TOGGLE_NAVBAR, payload: -1 });

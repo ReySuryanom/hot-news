@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { SET_QUERY_SEARCH, TOGGLE_NAVBAR } from '../actions';
+import { SET_LOADING, SET_QUERY_SEARCH, TOGGLE_NAVBAR } from '../actions';
 import { useNewsContext } from '../context/news_context';
 import { pages } from '../utils/constants';
 
@@ -7,6 +7,7 @@ export default function Navbar() {
   const [state, dispatch] = useNewsContext();
 
   const toggleNavbar = (page, name) => {
+    dispatch({ type: SET_LOADING, payload: true });
     dispatch({ type: TOGGLE_NAVBAR, payload: page });
     dispatch({ type: SET_QUERY_SEARCH, payload: name });
   };
