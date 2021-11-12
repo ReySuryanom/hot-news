@@ -1,11 +1,29 @@
-function SavedItem({ index, source: { id, name }, title, description, url }) {
+import { FaTrash } from 'react-icons/fa';
+import { Button } from '.';
+
+function SavedItem({
+  index,
+  source: { id, name },
+  title,
+  description,
+  url,
+  removeHandler,
+}) {
   return (
     <tr className={index % 2 === 0 ? 'bg-text-light' : 'bg-white'}>
+      <td>
+        <Button
+          className='my-3 ml-4 text-red-500 hover:text-red-700'
+          onClick={() => removeHandler(url)}
+        >
+          <FaTrash />
+        </Button>
+      </td>
       <td className='pl-5'>
         <p>{`${id || 'unknown'} - ${name}`}</p>
         <a
           href={url}
-          className='font-semibold underline text-primary-dark'
+          className='font-semibold hover:underline text-primary-dark'
           target='_blank'
           rel='noreferrer'
           role='button'

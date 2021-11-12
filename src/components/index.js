@@ -1,4 +1,5 @@
 import Aside from './Aside';
+import Button from './Button';
 import Footer from './Footer';
 import Loading from './Loading';
 import Navbar from './Navbar';
@@ -9,6 +10,7 @@ import SearchBox from './SearchBox';
 
 export {
   Aside,
+  Button,
   Footer,
   Loading,
   Navbar,

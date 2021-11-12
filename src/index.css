@@ -11,19 +11,13 @@ html {
 }
 
 .special-list {
-  position: relative;
-  text-align: center;
+  @apply relative text-center;
 }
 
 .special-list:hover::after,
 .special-list-active::after {
   content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0px;
-  width: 65%;
-  border-bottom: 2px solid white;
+  @apply absolute bottom-0 w-8/12 transform -translate-x-1/2 border-b-2 border-white border-solid left-1/2 content-none;
 }
 
 .heading-2 {

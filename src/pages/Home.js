@@ -1,6 +1,6 @@
 import React from 'react';
 import { Aside, Loading, NewsItem, NewsLists } from '../components';
-import { useNewsContext } from '../context/news_context';
+import { useNewsContext } from '../context/newsContext';
 import { formattedNews } from '../utils/helpers';
 
 function Home() {
@@ -28,7 +28,7 @@ function Home() {
         <section className='w-6/12'>
           <NewsLists column>
             {mergedArray[2].map((item) => (
-              <NewsItem {...item} key={item.url} margin={68} headlines />
+              <NewsItem {...item} key={item.url} margin={68} type='headlines' />
             ))}
           </NewsLists>
         </section>

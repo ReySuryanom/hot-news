@@ -1,5 +1,5 @@
 import { Loading, NewsItem, NewsLists } from '../components';
-import { useNewsContext } from '../context/news_context';
+import { useNewsContext } from '../context/newsContext';
 import { formattedNews } from '../utils/helpers';
 
 function SpecialPages() {
@@ -16,7 +16,7 @@ function SpecialPages() {
       <span className='heading-border-2' />
       <NewsLists column className='w-full p-20 space-y-10'>
         {mergedArray[0].map((item) => (
-          <NewsItem key={item.url} {...item} margin={130} search />
+          <NewsItem key={item.url} {...item} margin={130} type='search' />
         ))}
       </NewsLists>
     </main>

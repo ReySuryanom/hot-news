@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useHistory } from 'react-router';
-import { SET_LOADING, SET_QUERY_SEARCH, TOGGLE_NAVBAR } from '../actions';
-import { useNewsContext } from '../context/news_context';
+import {
+  SET_LOADING,
+  SET_QUERY_SEARCH,
+  TOGGLE_NAVBAR,
+} from '../reducer/actions';
+import { useNewsContext } from '../context/newsContext';
+import { Button } from '.';
 
 function SearchBox() {
   const [state, dispatch] = useNewsContext();
@@ -36,9 +41,9 @@ function SearchBox() {
           onKeyPress={searchButton}
           onChange={(e) => setText(e.target.value)}
         />
-        <button className='absolute right-8 top-3' onClick={searchButton}>
+        <Button className='absolute right-8 top-3' onClick={searchButton}>
           <FaSearch size='2rem' className='text-primary-light' />
-        </button>
+        </Button>
       </div>
     </section>
   );

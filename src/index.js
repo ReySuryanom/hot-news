@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { NewsProvider } from './context/news_context';
-import { initialState, news_reducer } from './reducer/news_reducer';
+import { NewsProvider } from './context/newsContext';
+import { initialState, news_reducer } from './reducer/newsReducer';
 
 ReactDOM.render(
   <React.StrictMode>

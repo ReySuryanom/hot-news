@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
-import { SET_LOADING, SET_QUERY_SEARCH, TOGGLE_NAVBAR } from '../actions';
-import { useNewsContext } from '../context/news_context';
+import {
+  SET_LOADING,
+  SET_QUERY_SEARCH,
+  TOGGLE_NAVBAR,
+} from '../reducer/actions';
+import { useNewsContext } from '../context/newsContext';
 import { pages } from '../utils/constants';
 
 export default function Navbar() {

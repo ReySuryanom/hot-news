@@ -1,68 +1,51 @@
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { useNewsContext } from '../context/news_context';
+import {
+  SET_LOADING,
+  SET_QUERY_SEARCH,
+  TOGGLE_NAVBAR,
+} from '../reducer/actions';
+import { useNewsContext } from '../context/newsContext';
+import { footerlists, iconlists } from '../utils/constants';
+import { Link } from 'react-router-dom';
 
 function Footer() {
-  const [state] = useNewsContext();
-  const style = `flex justify-around p-16 text-lg text-white bg-primary-dark ${
+  const [state, dispatch] = useNewsContext();
+
+  const footerStyle = `flex justify-around p-16 text-lg text-white bg-primary-dark ${
     state.isLoading && 'mt-20'
   }`;
 
+  const linkHandler = (list) => {
+    dispatch({ type: SET_LOADING, payload: true });
+    dispatch({ type: SET_QUERY_SEARCH, payload: list });
+    dispatch({ type: TOGGLE_NAVBAR, payload: -1 });
+  };
+
   return (
-    <footer className={style}>
+    <footer className={footerStyle}>
       <div className='self-center text-center'>
         <h4 className='mb-4 text-xl font-extrabold'>HotNews.</h4>
         <div className='flex justify-between w-40 text-3xl'>
-          <button>
-            <FaFacebook />
-          </button>
-          <button>
-            <FaInstagram />
-          </button>
-          <button>
-            <FaTwitter />
-          </button>
-          <button>
-            <FaYoutube />
-          </button>
+          {iconlists.map(({ link, icon }) => (
+            <a href={link} key={link} target='_blank' rel='noreferrer'>
+              {icon}
+            </a>
+          ))}
         </div>
       </div>
-      <div>
-        <h4 className='text-xl font-extrabold'>Kategori</h4>
-        <ul>
-          <li>News</li>
-          <li>Edukasi</li>
-          <li>Programming</li>
-          <li>Teknologi</li>
-          <li>Entertainment</li>
-          <li>Sport</li>
-          <li>SepakBola</li>
-          <li>Otomotif</li>
-        </ul>
-      </div>
-      <div>
-        <h4 className='text-xl font-extrabold'>Jaringan Media</h4>
-        <ul>
-          <li>CNN Indonesia</li>
-          <li>CNBC Indonesia</li>
-          <li>Haibunda</li>
-          <li>Insertlive</li>
-          <li>Beautynesia</li>
-          <li>Female Daily</li>
-        </ul>
-      </div>
-      <div>
-        <h4 className='text-xl font-extrabold'>Informasi</h4>
-        <ul>
-          <li>Redaksi</li>
-          <li>Pedoman Media Siber</li>
-          <li>Karir</li>
-          <li>Kotak Pos</li>
-          <li>Media Partner</li>
-          <li>Info Iklan</li>
-          <li>Privacy Policy</li>
-          <li>Disclaimer</li>
-        </ul>
-      </div>
+      {footerlists.map(({ header, lists }) => (
+        <div key={header}>
+          <h4 className='text-xl font-extrabold'>{header}</h4>
+          <ul>
+            {lists.map((list) => (
+              <li key={list}>
+                <Link to={`/search/${list}`} onClick={() => linkHandler(list)}>
+                  {list}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </footer>
   );
 }

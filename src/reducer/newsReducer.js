@@ -4,7 +4,8 @@ import {
   ADD_TO_SAVED_NEWS,
   GET_NEWS,
   SET_LOADING,
-} from '../actions';
+  SET_SAVED_NEWS,
+} from './actions';
 
 export const initialState = {
   news: [],
@@ -54,6 +55,12 @@ export const news_reducer = (state, action) => {
       return {
         ...state,
         saved_news: updatedNews,
+      };
+
+    case SET_SAVED_NEWS:
+      return {
+        ...state,
+        saved_news: action.payload,
       };
 
     default:

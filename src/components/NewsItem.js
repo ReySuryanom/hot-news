@@ -1,29 +1,40 @@
-import * as styles from '../utils/constants';
+// import * as styles from '../utils/constants';
 import { FaBookmark } from 'react-icons/fa';
 import { truncate } from '../utils/helpers';
-import { useNewsContext } from '../context/news_context';
-import { ADD_TO_SAVED_NEWS } from '../actions';
+import { useNewsContext } from '../context/newsContext';
+import { ADD_TO_SAVED_NEWS } from '../reducer/actions';
+import { Button } from '.';
+import {
+  articleStyle,
+  buttonStyle,
+  divStyle,
+  dlStyle,
+  dtStyle,
+  img,
+  justifyFixed,
+  specialStyle,
+} from '../utils/constants';
 
 function NewsItem({
-  headlines,
-  aside,
-  search,
+  type = 'default',
   title,
   source: { id, name },
   publishedAt,
   url,
   urlToImage,
   description,
-  margin = 80,
+  length = 80,
 }) {
   const [state, dispatch] = useNewsContext();
-  const div = `${styles.div(aside, search, headlines)} mb-0.5 relative`;
-  const dl =
-    styles.dl(aside, search, headlines) +
-    styles.justifyFixed(aside, search) +
-    styles.special(search);
+  // const div = `${styles.div(aside, search, headlines)} mb-0.5 relative`;
+  // const dl =
+  //   styles.dl(aside, search, headlines) +
+  //   styles.justifyFixed(aside, search) +
+  //   styles.special(search);
 
-  const bookmarkHandle = () => {
+  const dlTag = dlStyle[type] + justifyFixed[type] + specialStyle[type];
+
+  const bookmarkToggler = () => {
     const newsItem = {
       title,
       source: { id, name },
@@ -35,26 +46,28 @@ function NewsItem({
     dispatch({ type: ADD_TO_SAVED_NEWS, payload: newsItem });
   };
 
-  const test = state.saved_news.some((item) => item.url === url)
+  const checkIfNewsAlreadySaved = state.saved_news.some(
+    (item) => item.url === url
+  )
     ? 'text-primary-light'
     : 'text-gray-500';
-
+  console.log(dlTag);
   return (
-    <article className={`${styles.article(aside, search, headlines)} group`}>
-      <div className={div}>
-        <img className={styles.img(urlToImage)} src={urlToImage} alt={title} />
-        <button className={styles.button} onClick={bookmarkHandle}>
+    <article className={articleStyle[type]}>
+      <div className={divStyle[type]}>
+        <img className={img(urlToImage)} src={urlToImage} alt={title} />
+        <Button className={buttonStyle} onClick={bookmarkToggler}>
           <FaBookmark
-            className={`absolute right-1.5 text-md top-1.5 ${test}`}
+            className={`absolute right-1.5 text-md top-1.5 ${checkIfNewsAlreadySaved}`}
           />
-        </button>
+        </Button>
       </div>
       <dl
-        className={dl}
+        className={dlTag}
         role='button'
         onClick={() => window.open(url, '_blank')}
       >
-        <dt className={styles.dt(search)}>{truncate(title, margin)}</dt>
+        <dt className={dtStyle.search(type)}>{truncate(title, length)}</dt>
         <dd className='text-sm font-bold text-primary-dark'>
           {id || 'unknown'}
           <span className='font-medium text-text-gray'> - {name}</span>
