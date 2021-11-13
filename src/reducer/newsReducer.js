@@ -1,47 +1,45 @@
-import {
-  SET_QUERY_SEARCH,
-  TOGGLE_NAVBAR,
-  ADD_TO_SAVED_NEWS,
-  GET_NEWS,
-  SET_LOADING,
-  SET_SAVED_NEWS,
-} from './actions';
+import * as TYPE from './actions';
 
 export const initialState = {
   news: [],
   saved_news: [],
   query: 'indonesia',
+  size: 12,
+  message: '',
   isLoading: true,
   pages: 0,
 };
 
 export const news_reducer = (state, action) => {
   switch (action.type) {
-    case TOGGLE_NAVBAR:
+    case TYPE.TOGGLE_NAVBAR:
+      const checkNavbarLocation = action.payload === 0;
+
       return {
         ...state,
+        size: checkNavbarLocation ? 12 : 6,
         pages: action.payload,
       };
 
-    case SET_QUERY_SEARCH:
+    case TYPE.SET_QUERY_SEARCH:
       return {
         ...state,
         query: action.payload,
       };
 
-    case SET_LOADING:
+    case TYPE.SET_LOADING:
       return {
         ...state,
         isLoading: action.payload,
       };
 
-    case GET_NEWS:
+    case TYPE.GET_NEWS:
       return {
         ...state,
         news: action.payload,
       };
 
-    case ADD_TO_SAVED_NEWS:
+    case TYPE.ADD_TO_SAVED_NEWS:
       const news = action.payload;
       const checkIfNewsAlreadySaved = state.saved_news.some(
         (item) => item.url === news.url
@@ -52,15 +50,24 @@ export const news_reducer = (state, action) => {
       const updatedNews = checkIfNewsAlreadySaved
         ? removeNews
         : [...state.saved_news, news];
+
       return {
         ...state,
         saved_news: updatedNews,
       };
 
-    case SET_SAVED_NEWS:
+    case TYPE.SET_SAVED_NEWS:
       return {
         ...state,
         saved_news: action.payload,
+      };
+
+    case TYPE.SET_MESSAGE:
+      return {
+        ...state,
+        news: [],
+        message: action.payload,
+        isLoading: false,
       };
 
     default:

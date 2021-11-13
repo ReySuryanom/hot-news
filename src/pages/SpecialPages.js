@@ -1,21 +1,19 @@
-import { Loading, NewsItem, NewsLists } from '../components';
+import { Error, Loading, NewsItem, NewsLists } from '../components';
 import { useNewsContext } from '../context/newsContext';
-import { formattedNews } from '../utils/helpers';
 
 function SpecialPages() {
   const [state] = useNewsContext();
   const { news, isLoading, query } = state;
 
   if (isLoading) return <Loading />;
-
-  const mergedArray = formattedNews(news);
+  else if (news.length === 0) return <Error />;
 
   return (
     <main className='w-full min-h-full p-12 bg-white'>
       <h2 className='heading-2'>{query} NEWS</h2>
       <span className='heading-border-2' />
       <NewsLists column className='w-full p-20 space-y-10'>
-        {mergedArray[0].map((item) => (
+        {news.map((item) => (
           <NewsItem key={item.url} {...item} margin={130} type='search' />
         ))}
       </NewsLists>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Aside, Loading, NewsItem, NewsLists } from '../components';
+import { Aside, Error, Loading, NewsItem, NewsLists } from '../components';
 import { useNewsContext } from '../context/newsContext';
 import { formattedNews } from '../utils/helpers';
 
@@ -8,6 +8,7 @@ function Home() {
   const { news, isLoading, query } = state;
 
   if (isLoading) return <Loading />;
+  else if (news.length === 0) return <Error />;
 
   const mergedArray = formattedNews(news);
 
@@ -28,7 +29,13 @@ function Home() {
         <section className='w-6/12'>
           <NewsLists column>
             {mergedArray[2].map((item) => (
-              <NewsItem {...item} key={item.url} margin={68} type='headlines' />
+              <NewsItem
+                {...item}
+                key={item.url}
+                margin={68}
+                size='2rem'
+                type='headlines'
+              />
             ))}
           </NewsLists>
         </section>

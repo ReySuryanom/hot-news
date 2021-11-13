@@ -16,7 +16,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: { fontWeight: ['group-hover'] },
+    extend: {
+      fontWeight: ['group-hover'],
+      brightness: ['group-hover', 'hover'],
+    },
   },
   plugins: [],
 };
