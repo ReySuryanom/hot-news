@@ -34,7 +34,7 @@ function Saved() {
             <th className='w-5/12 p-2'>Description</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='shadow-xl'>
           {saved_news.length !== 0
             ? saved_news.map((item, index) => (
                 <SavedItem

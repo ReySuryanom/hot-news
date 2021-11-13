@@ -9,11 +9,14 @@ function SavedItem({
   url,
   deleteNews,
 }) {
+  const isOdd = index % 2 === 0 ? 'bg-text-light' : 'bg-white';
+  const trStyle = `${isOdd} hover:bg-gray-300 transition ease-in-out duration-500 hover:text-black group`;
+
   return (
-    <tr className={index % 2 === 0 ? 'bg-text-light' : 'bg-white'}>
+    <tr className={trStyle}>
       <td>
         <Button
-          className='my-3 ml-4 text-red-500 hover:text-red-700'
+          className='my-3 ml-4 text-red-500 transition duration-500 ease-in-out group-hover:text-red-700'
           onClick={() => deleteNews(url)}
         >
           <FaTrash />
