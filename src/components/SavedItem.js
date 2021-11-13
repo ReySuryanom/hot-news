@@ -7,14 +7,14 @@ function SavedItem({
   title,
   description,
   url,
-  removeHandler,
+  deleteNews,
 }) {
   return (
     <tr className={index % 2 === 0 ? 'bg-text-light' : 'bg-white'}>
       <td>
         <Button
           className='my-3 ml-4 text-red-500 hover:text-red-700'
-          onClick={() => removeHandler(url)}
+          onClick={() => deleteNews(url)}
         >
           <FaTrash />
         </Button>

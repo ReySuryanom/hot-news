@@ -17,7 +17,7 @@ html {
 .special-list:hover::after,
 .special-list-active::after {
   content: '';
-  @apply absolute bottom-0 w-8/12 transform -translate-x-1/2 border-b-2 border-white border-solid left-1/2;
+  @apply absolute bottom-0 w-8/12 transition duration-1000 ease-in-out transform -translate-x-1/2 border-b-2 border-white border-solid left-1/2;
 }
 
 .heading-2 {

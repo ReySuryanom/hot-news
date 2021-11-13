@@ -14,7 +14,7 @@ function Footer() {
     state.isLoading && 'mt-20'
   }`;
 
-  const linkHandler = (list) => {
+  const applyQuery = (list) => {
     dispatch({ type: SET_LOADING, payload: true });
     dispatch({ type: SET_QUERY_SEARCH, payload: list });
     dispatch({ type: TOGGLE_NAVBAR, payload: -1 });
@@ -36,10 +36,10 @@ function Footer() {
         <div key={header}>
           <h4 className='text-xl font-extrabold'>{header}</h4>
           <ul>
-            {lists.map((list) => (
-              <li key={list}>
-                <Link to={`/search/${list}`} onClick={() => linkHandler(list)}>
-                  {list}
+            {lists.map((query) => (
+              <li key={query}>
+                <Link to={`/search/${query}`} onClick={() => applyQuery(query)}>
+                  {query}
                 </Link>
               </li>
             ))}

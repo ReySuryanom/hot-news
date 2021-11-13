@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { GET_NEWS, SET_LOADING, SET_MESSAGE } from '../reducer/actions';
 import { CONFIG } from '../api';
 import { useNewsContext } from '../context/newsContext';
-import { limitMessage } from '../utils/constants';
+import { LIMIT_MESSAGE } from '../utils/constants';
 
 const { PARAMS, BASE_URL, ENDPOINT } = CONFIG;
 
@@ -32,7 +32,7 @@ export const useFetch = () => {
       })
       .catch((error) => {
         const message = error.message;
-        const errorMessage = message.match(/(429)/g) ? limitMessage : message;
+        const errorMessage = message.match(/(429)/g) ? LIMIT_MESSAGE : message;
         dispatch({ type: SET_MESSAGE, payload: errorMessage });
       });
   }, [query, size, dispatch]);

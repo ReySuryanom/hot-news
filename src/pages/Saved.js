@@ -8,9 +8,9 @@ function Saved() {
 
   if (isLoading) return <Loading />;
 
-  const removeHandler = (id) => {
-    const removeNews = state.saved_news.filter((item) => item.url !== id);
-    dispatch({ type: SET_SAVED_NEWS, payload: removeNews });
+  const deleteNews = (id) => {
+    const deleteNews = state.saved_news.filter((item) => item.url !== id);
+    dispatch({ type: SET_SAVED_NEWS, payload: deleteNews });
   };
 
   const emptyMessage = (
@@ -40,7 +40,7 @@ function Saved() {
                 <SavedItem
                   key={item.url}
                   index={index}
-                  removeHandler={removeHandler}
+                  deleteNews={deleteNews}
                   {...item}
                 />
               ))

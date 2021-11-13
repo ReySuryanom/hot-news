@@ -1,9 +1,9 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
-import { checkDefaultImg } from './helpers';
+import { isItDefaultImg } from './helpers';
 
-export const regex = /(rcom-default|reuters-default)/g;
+export const DEFAULT_IMAGE = /(rcom-default|reuters-default)/g;
 
-export const limitMessage =
+export const LIMIT_MESSAGE =
   'You have made too many requests recently. Developer accounts are limited to 100 requests over a 24 hour period (50 requests available every 12 hours). Please upgrade to a paid plan if you need more requests.';
 
 export const pages = [
@@ -101,7 +101,7 @@ export const specialStyle = {
   search: ' h-44',
   default: '',
 };
-export const img = (url) =>
-  checkDefaultImg(url)
+export const imgStyle = (url) =>
+  isItDefaultImg(url)
     ? 'border-2 border-primary-light object-cover w-full h-full transition duration-300 ease-in-out group-hover:brightness-50 filter'
     : 'w-full h-full object-cover transition duration-300 ease-in-out group-hover:brightness-50 filter';

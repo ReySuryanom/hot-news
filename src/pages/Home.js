@@ -1,7 +1,7 @@
 import React from 'react';
 import { Aside, Error, Loading, NewsItem, NewsLists } from '../components';
 import { useNewsContext } from '../context/newsContext';
-import { formattedNews } from '../utils/helpers';
+import { splitNews } from '../utils/helpers';
 
 function Home() {
   const [state] = useNewsContext();
@@ -10,7 +10,7 @@ function Home() {
   if (isLoading) return <Loading />;
   else if (news.length === 0) return <Error />;
 
-  const mergedArray = formattedNews(news);
+  const mergingArray = splitNews(news);
 
   return (
     <main>
@@ -20,7 +20,7 @@ function Home() {
         <h3 className='heading-3'>Berita Utama</h3>
         <span className='heading-border-3' />
         <NewsLists>
-          {mergedArray[0].map((item) => (
+          {mergingArray[0].map((item) => (
             <NewsItem {...item} key={item.url} />
           ))}
         </NewsLists>
@@ -28,7 +28,7 @@ function Home() {
       <div className='flex justify-between m-14'>
         <section className='w-6/12'>
           <NewsLists column>
-            {mergedArray[2].map((item) => (
+            {mergingArray[2].map((item) => (
               <NewsItem
                 {...item}
                 key={item.url}
@@ -39,7 +39,7 @@ function Home() {
             ))}
           </NewsLists>
         </section>
-        <Aside lists={mergedArray[1]} />
+        <Aside news={mergingArray[1]} />
       </div>
     </main>
   );
