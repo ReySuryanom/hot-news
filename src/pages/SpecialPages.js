@@ -14,7 +14,7 @@ function SpecialPages() {
       <span className='heading-border-2' />
       <NewsLists column className='w-full p-20 space-y-10'>
         {news.map((item) => (
-          <NewsItem key={item.url} {...item} margin={130} type='search' />
+          <NewsItem key={item.url} {...item} length={130} type='search' />
         ))}
       </NewsLists>
     </main>

@@ -10,6 +10,7 @@ import { pages } from '../utils/constants';
 export default function Navbar() {
   const [state, dispatch] = useNewsContext();
 
+  // Toggle untuk berpindah navbar sekaligus memproses data fetching
   const toggleNavbar = (page, name) => {
     dispatch({ type: SET_LOADING, payload: true });
     dispatch({ type: TOGGLE_NAVBAR, payload: page });
@@ -21,10 +22,11 @@ export default function Navbar() {
       <h1 className='text-2xl font-extrabold'>HotNews.</h1>
       <ul className='flex space-x-16 text-xl'>
         {pages.map(({ route, name }, index) => {
-          const activePage = index === state.pages && 'special-list-active';
+          // Mengecek state halaman untuk styling border bottom di nav list
+          const isPageActive = index === state.pages && 'special-list-active';
 
           return (
-            <li className={`special-list ${activePage}`} key={index}>
+            <li className={`special-list ${isPageActive}`} key={index}>
               <Link to={route} onClick={() => toggleNavbar(index, name)}>
                 {name}
               </Link>

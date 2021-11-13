@@ -1,5 +1,14 @@
 import * as TYPE from './actions';
 
+/**
+ * @property {Array<Object>} news - List berita yang didapat dari API.
+ * @property {Array<Object>} saved_news - List berita yang disimpan oleh user.
+ * @property {string} query - Query yang digunakan untuk menarik berita yang dicari.
+ * @property {number} size - Batas ukuran berita yang diambil/fetch.
+ * @property {string} message - Pesan khusus (biasanya pesan error) untuk user jika terjadi sesuatu.
+ * @property {boolean} isLoading - Loading untuk menunggu proses data fetching.
+ * @property {number} pages - Mengindentifikasikan sebagai halaman, dimulai dari 0:indonesia, 1:programming, dsb.
+ */
 export const initialState = {
   news: [],
   saved_news: [],
@@ -13,11 +22,11 @@ export const initialState = {
 export const news_reducer = (state, action) => {
   switch (action.type) {
     case TYPE.TOGGLE_NAVBAR:
-      const checkNavbarLocation = action.payload === 0;
+      const isNavbarAtFirstPage = action.payload === 0;
 
       return {
         ...state,
-        size: checkNavbarLocation ? 12 : 6,
+        size: isNavbarAtFirstPage ? 12 : 6,
         pages: action.payload,
       };
 
@@ -41,13 +50,13 @@ export const news_reducer = (state, action) => {
 
     case TYPE.ADD_TO_SAVED_NEWS:
       const news = action.payload;
-      const checkIfNewsAlreadySaved = state.saved_news.some(
+      const areNewsAlreadySaved = state.saved_news.some(
         (item) => item.url === news.url
       );
       const removeNews = state.saved_news.filter(
         (item) => item.url !== news.url
       );
-      const updatedNews = checkIfNewsAlreadySaved
+      const updatedNews = areNewsAlreadySaved
         ? removeNews
         : [...state.saved_news, news];
 

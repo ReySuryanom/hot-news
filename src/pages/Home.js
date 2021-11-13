@@ -10,6 +10,7 @@ function Home() {
   if (isLoading) return <Loading />;
   else if (news.length === 0) return <Error />;
 
+  // Membagi array menjadi 3 bagian, masing-masing untuk header, headlines dan aside.
   const mergingArray = splitNews(news);
 
   return (
@@ -32,7 +33,7 @@ function Home() {
               <NewsItem
                 {...item}
                 key={item.url}
-                margin={68}
+                length={68}
                 size='2rem'
                 type='headlines'
               />

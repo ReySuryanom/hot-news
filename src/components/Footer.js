@@ -10,10 +10,12 @@ import { Link } from 'react-router-dom';
 function Footer() {
   const [state, dispatch] = useNewsContext();
 
+  // For styling purpose
   const footerStyle = `flex justify-around p-16 text-lg text-white bg-primary-dark ${
     state.isLoading && 'mt-20'
   }`;
 
+  // Pergi ke berita dan route sesuai list yang diklik pengguna
   const applyQuery = (list) => {
     dispatch({ type: SET_LOADING, payload: true });
     dispatch({ type: SET_QUERY_SEARCH, payload: list });

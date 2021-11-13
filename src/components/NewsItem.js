@@ -16,6 +16,18 @@ import {
   specialStyle,
 } from '../utils/constants';
 
+/**
+ * @param {string=} type - Untuk menentukan style layout [headlines, aside, search, default].
+ * @param title - Judul berita.
+ * @param id - ID author atau sumber.
+ * @param name - Nama author atau sumber.
+ * @param publishedAt - Tanggal berita diupload.
+ * @param url - Url berita (digunakan sebagai id)
+ * @param urlToImage - Url gambar berita
+ * @param description - deskripsi berita
+ * @param {number} size - Ukuran button bookmark.
+ * @param {number=} length - Batas panjang text yang nantinya ditruncate function: truncateText(string).
+ */
 function NewsItem({
   type = 'default',
   title,
@@ -29,6 +41,7 @@ function NewsItem({
 }) {
   const [state, dispatch] = useNewsContext();
 
+  // Untuk memproses berita agar dapat menyimpan dan menghapus berita yang diklik user.
   const toggleBookmark = () => {
     const newsItem = {
       title,
@@ -41,8 +54,10 @@ function NewsItem({
     dispatch({ type: ADD_TO_SAVED_NEWS, payload: newsItem });
   };
 
+  // Membuka halaman berita yang diklik user pada halaman baru
   const openNewsSource = () => window.open(url, '_blank');
 
+  // Mengecek list berita yang tersimpan untuk syling purpose
   const isNewsAlreadySaved = state.saved_news.some((item) => item.url === url)
     ? 'text-primary-light'
     : 'text-gray-500';

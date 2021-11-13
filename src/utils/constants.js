@@ -1,6 +1,10 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { isItDefaultImg } from './helpers';
 
+/**
+ * @readonly
+ */
+
 export const DEFAULT_IMAGE = /(rcom-default|reuters-default)/g;
 
 export const LIMIT_MESSAGE =
@@ -48,13 +52,9 @@ export const footerlists = [
   },
 ];
 
-// Styles (Classname utilities)
-export const buttonStyle = {
-  style: (type) => {
-    const size = type === 'headlines' ? 'w-12 h-12' : 'w-8 h-8';
-    return `absolute z-10 bg-white border-2 rounded-full border-text-gray top-2 right-2 ${size}`;
-  },
-};
+// For styling purposes (Tailwind classname utilities)
+// khusus untuk komponen NewsItem yang dibentuk dalam object
+
 export const articleStyle = {
   aside: 'flex group',
   search: 'flex shadow-md group',
@@ -73,17 +73,29 @@ export const div2Style = {
   default: 'overflow-hidden h-32 mb-0.5 relative ',
   headlines: 'relative',
 };
-export const faSearchStyle = {
-  style: (type) => {
-    const size = type === 'headlines' ? 'text-4xl' : 'text-xl';
-    return `absolute ${size} text-white transform opacity-0 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 transition duration-300 ease-in-out group-hover:opacity-100`;
-  },
-};
 export const dlStyle = {
   aside: 'w-3/6 pl-3 flex flex-col ',
   search: 'w-3/6 pl-3 flex flex-col ',
   headlines: 'relative mx-auto w-11/12 bg-white p-5 -mt-10 shadow-md ',
   default: '',
+};
+export const justifyFixed = {
+  aside: ' justify-between ',
+  search: ' justify-center bg-text-light w-full pl-10',
+  default: '',
+};
+export const specialStyle = {
+  search: ' h-44',
+  default: '',
+};
+
+// Sama seperti diatas didalam object, namun sedikit berbeda
+// karena membutuhkan kondisi khusus.
+export const faSearchStyle = {
+  style: (type) => {
+    const size = type === 'headlines' ? 'text-4xl' : 'text-xl';
+    return `absolute ${size} text-white transform opacity-0 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 transition duration-300 ease-in-out group-hover:opacity-100`;
+  },
 };
 export const dtStyle = {
   style: (type) => {
@@ -92,14 +104,11 @@ export const dtStyle = {
   },
   default: '',
 };
-export const justifyFixed = {
-  aside: ' justify-between',
-  search: ' justify-center bg-text-light w-full pl-10',
-  default: '',
-};
-export const specialStyle = {
-  search: ' h-44',
-  default: '',
+export const buttonStyle = {
+  style: (type) => {
+    const size = type === 'headlines' ? 'w-12 h-12' : 'w-8 h-8';
+    return `absolute z-10 bg-white border-2 rounded-full border-text-gray top-2 right-2 ${size}`;
+  },
 };
 export const imgStyle = (url) =>
   isItDefaultImg(url)

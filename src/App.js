@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useFetch } from './hook/useFetch';
 
 function App() {
-  // data fetching
+  // melakukan data fetching saat pertama kali halaman dimuat.
   useFetch();
 
   return (
