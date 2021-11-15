@@ -35,7 +35,7 @@ function Footer() {
         </div>
       </div>
       {footerlists.map(({ header, lists }) => (
-        <div key={header}>
+        <div className='hidden' key={header}>
           <h4 className='text-xl font-extrabold'>{header}</h4>
           <ul>
             {lists.map((query) => (

@@ -33,7 +33,7 @@ function SearchBox() {
   }, [pages]);
 
   return (
-    <section className='relative py-16 bg-none'>
+    <section className='relative hidden py-16 bg-none lg:block'>
       <div className='relative w-10/12 h-auto mx-auto'>
         <input
           className='min-w-full px-8 py-4 rounded-full shadow-md outline-none'

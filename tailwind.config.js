@@ -13,6 +13,13 @@ module.exports = {
           light: '#F4F4F4',
         },
       },
+      height: {
+        19: '72px',
+        50: '196px',
+      },
+      transitionProperty: {
+        height: 'height',
+      },
     },
   },
   variants: {
