@@ -9,12 +9,12 @@ function SpecialPages() {
   else if (news.length === 0) return <Error />;
 
   return (
-    <main className='w-full min-h-full p-12 bg-white'>
+    <main className='w-full min-h-full p-10 bg-white lg:p-12'>
       <h2 className='heading-2'>{query} NEWS</h2>
       <span className='heading-border-2' />
-      <NewsLists column className='w-full p-20 space-y-10'>
+      <NewsLists type='search' className='w-full mt-10 lg:mt-0 lg:p-20'>
         {news.map((item) => (
-          <NewsItem key={item.url} {...item} length={130} type='search' />
+          <NewsItem key={item.url} {...item} length={58} type='search' />
         ))}
       </NewsLists>
     </main>

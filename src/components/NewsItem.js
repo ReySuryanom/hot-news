@@ -5,7 +5,6 @@ import { ADD_TO_SAVED_NEWS } from '../reducer/actions';
 import { Button } from '.';
 import {
   articleStyle,
-  buttonStyle,
   div1Style,
   div2Style,
   dlStyle,
@@ -59,8 +58,8 @@ function NewsItem({
 
   // Mengecek list berita yang tersimpan untuk syling purpose
   const isNewsAlreadySaved = state.saved_news.some((item) => item.url === url)
-    ? 'text-primary-light'
-    : 'text-gray-500';
+    ? 'text-yellow-400'
+    : 'text-white hover:text-yellow-400';
 
   return (
     <article className={articleStyle[type]}>
@@ -69,11 +68,11 @@ function NewsItem({
           <img className={imgStyle(urlToImage)} src={urlToImage} alt={title} />
           <FaSearch className={faSearchStyle.style(type)} />
         </div>
-        <Button className={buttonStyle.style(type)} onClick={toggleBookmark}>
-          <FaBookmark
-            size={size}
-            className={`absolute right-1.5 text-md top-1.5 ${isNewsAlreadySaved}`}
-          />
+        <Button
+          className='absolute top-0 right-0 rounded-bl-lg bg-primary-light'
+          onClick={toggleBookmark}
+        >
+          <FaBookmark size={size} className={isNewsAlreadySaved} />
         </Button>
       </div>
       <dl

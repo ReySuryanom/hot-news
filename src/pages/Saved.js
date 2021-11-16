@@ -18,7 +18,7 @@ function Saved() {
   const emptyMessage = (
     <tr>
       <td colSpan={4}>
-        <p className='p-3 text-lg font-medium text-center text-gray-600'>
+        <p className='p-5 text-lg font-medium text-center text-gray-600 lg:p-3'>
           Belum ada berita favorite, pilihlah berita favoritmu.
         </p>
       </td>
@@ -26,14 +26,14 @@ function Saved() {
   );
 
   return (
-    <section className='py-12 bg-white px-28'>
-      <table className='w-full '>
+    <section className='px-4 bg-white py-7 lg:py-12 lg:px-28'>
+      <table className='w-full table-fixed '>
         <thead className='text-2xl border-b-2 border-primary-light'>
           <tr className='text-left'>
-            <th />
-            <th className='w-3/12 p-2'>Source</th>
-            <th className='w-4/12 p-2'>Title</th>
-            <th className='w-5/12 p-2'>Description</th>
+            <th className='w-1/12' />
+            <th className='w-3/12 lg:p-2'>Source</th>
+            <th className='w-3/12 lg:p-2'>Title</th>
+            <th className='w-5/12 lg:p-2'>Description</th>
           </tr>
         </thead>
         <tbody className='shadow-xl'>

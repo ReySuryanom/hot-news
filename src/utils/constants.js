@@ -57,35 +57,35 @@ export const footerlists = [
 
 export const articleStyle = {
   aside: 'flex group',
-  search: 'flex shadow-md group',
+  search: 'flex h-32 shadow-md lg:h-auto group',
   headlines: 'w-full group',
-  default: 'w-56 group',
+  default: 'w-full lg:w-56 group',
 };
 export const div1Style = {
   aside: 'w-3/6 mb-0.5 relative ',
-  search: 'overflow-hidden w-5/12 h-44 mb-0.5 relative ',
-  default: 'overflow-hidden h-32 mb-0.5 relative ',
-  headlines: 'relative',
+  search: 'overflow-hidden w-9/12 lg:w-5/12 h-32 lg:h-44 mb-0.5 relative ',
+  headlines: 'relative overflow-hidden',
+  default: 'overflow-hidden h-44 lg:h-32 mb-0.5 relative ',
 };
 export const div2Style = {
   aside: 'w-full mb-0.5 relative ',
-  search: 'overflow-hidden w-full h-44 mb-0.5 relative ',
-  default: 'overflow-hidden h-32 mb-0.5 relative ',
-  headlines: 'relative',
+  search: 'overflow-hidden w-full h-32 lg:h-44 mb-0.5 relative ',
+  headlines: 'relative overflow-hidden',
+  default: 'overflow-hidden h-44 lg:h-32 mb-0.5 relative ',
 };
 export const dlStyle = {
-  aside: 'w-3/6 pl-3 flex flex-col ',
-  search: 'w-3/6 pl-3 flex flex-col ',
-  headlines: 'relative mx-auto w-11/12 bg-white p-5 -mt-10 shadow-md ',
+  aside: 'flex flex-col w-3/6 pl-3 ',
+  search: 'flex flex-col w-3/12 pl-0 lg:w-full ',
+  headlines: 'relative w-11/12 p-5 mx-auto -mt-10 bg-white shadow-md ',
   default: '',
 };
 export const justifyFixed = {
   aside: ' justify-between ',
-  search: ' justify-center bg-text-light w-full pl-10',
+  search: ' justify-center w-full pl-4  bg-text-light lg:pl-10',
   default: '',
 };
 export const specialStyle = {
-  search: ' h-44',
+  search: ' h-32 lg:h-44',
   default: '',
 };
 
@@ -99,16 +99,10 @@ export const faSearchStyle = {
 };
 export const dtStyle = {
   style: (type) => {
-    const style = type === 'search' ? 'text-xl' : 'text-sm';
+    const style = type === 'search' ? 'text-md lg:text-xl' : 'text-sm';
     return `font-medium ${style} group-hover:text-black transition duration-300 ease-in-out text-gray-800`;
   },
   default: '',
-};
-export const buttonStyle = {
-  style: (type) => {
-    const size = type === 'headlines' ? 'w-12 h-12' : 'w-8 h-8';
-    return `absolute z-10 bg-white border-2 rounded-full border-text-gray top-2 right-2 ${size}`;
-  },
 };
 export const imgStyle = (url) =>
   isItDefaultImg(url)

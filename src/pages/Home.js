@@ -22,13 +22,13 @@ function Home() {
         <span className='heading-border-3' />
         <NewsLists>
           {mergingArray[0].map((item) => (
-            <NewsItem {...item} key={item.url} />
+            <NewsItem {...item} key={item.url} length={53} />
           ))}
         </NewsLists>
       </div>
-      <div className='flex justify-between m-14'>
-        <section className='w-6/12'>
-          <NewsLists column>
+      <div className='flex flex-col p-10 lg:flex-row lg:justify-between lg:p-0 lg:m-14'>
+        <section className='lg:w-6/12'>
+          <NewsLists type='headlines'>
             {mergingArray[2].map((item) => (
               <NewsItem
                 {...item}

@@ -2,12 +2,12 @@ import { NewsItem, NewsLists } from '.';
 
 function Aside({ news }) {
   return (
-    <aside className='hidden w-5/12 p-4 pb-24 bg-white'>
-      <h3 className='heading-3'>Berita Utama</h3>
+    <aside className='w-full pb-24 lg:bg-white lg:px-4 lg:w-5/12'>
+      <h3 className='heading-3'>Berita Lainnya</h3>
       <span className='heading-border-3' />
-      <NewsLists column>
+      <NewsLists type='aside'>
         {news.map((item) => (
-          <NewsItem {...item} key={item.url} type='aside' />
+          <NewsItem {...item} key={item.url} length={58} type='aside' />
         ))}
       </NewsLists>
     </aside>

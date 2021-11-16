@@ -14,7 +14,7 @@ module.exports = {
         },
       },
       height: {
-        19: '72px',
+        22: '84px',
         50: '196px',
       },
       transitionProperty: {

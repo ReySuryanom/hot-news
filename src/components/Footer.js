@@ -9,10 +9,12 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   const [state, dispatch] = useNewsContext();
+  const { isLoading, saved_news, pages } = state;
 
   // For styling purpose
-  const footerStyle = `flex justify-around p-16 text-lg text-white bg-primary-dark ${
-    state.isLoading && 'mt-20'
+  const areNotInSavedPage = saved_news.length === 0 && pages === 3;
+  const footerStyle = `flex w-full justify-around p-16 text-lg text-white bg-primary-dark ${
+    (isLoading || areNotInSavedPage) && 'fixed bottom-0'
   }`;
 
   // Pergi ke berita dan route sesuai list yang diklik pengguna
@@ -35,7 +37,7 @@ function Footer() {
         </div>
       </div>
       {footerlists.map(({ header, lists }) => (
-        <div className='hidden' key={header}>
+        <div className='hidden lg:block' key={header}>
           <h4 className='text-xl font-extrabold'>{header}</h4>
           <ul>
             {lists.map((query) => (

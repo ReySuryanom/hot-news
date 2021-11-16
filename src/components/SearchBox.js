@@ -44,7 +44,7 @@ function SearchBox() {
           onKeyPress={setQuery}
           onChange={(e) => setText(e.target.value)}
         />
-        <Button className='absolute right-8 top-3' onClick={setQuery}>
+        <Button className='absolute right-5 top-1.5' onClick={setQuery}>
           <FaSearch size='2rem' className='text-primary-light' />
         </Button>
       </div>

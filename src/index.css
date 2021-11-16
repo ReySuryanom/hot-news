@@ -10,6 +10,18 @@ html {
   @apply bg-text-light;
 }
 
+button > * {
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  @apply inline-block m-auto;
+}
+
+button {
+  min-width: 44px;
+  min-height: 44px;
+  @apply inline-block;
+}
+
 .special-list {
   @apply relative text-center;
 }
@@ -17,7 +29,7 @@ html {
 .special-list:hover::after,
 .special-list-active::after {
   content: '';
-  @apply absolute bottom-0 w-full transform -translate-x-1/2 border-b-2 border-white border-solid lg:w-8/12 left-1/2 top-7;
+  @apply absolute w-full transform -translate-x-1/2 border-b-2 border-white border-solid -bottom-1 lg:w-8/12 left-1/2;
 }
 
 .heading-2 {

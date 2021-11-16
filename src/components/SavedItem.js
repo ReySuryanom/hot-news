@@ -21,14 +21,14 @@ function SavedItem({
     <tr className={trStyle}>
       <td>
         <Button
-          className='my-3 ml-4 text-red-500 transition duration-500 ease-in-out group-hover:text-red-700'
+          className='my-3 ml-0 text-red-500 transition duration-500 ease-in-out lg:ml-4 group-hover:text-red-700'
           onClick={() => deleteNews(url)}
         >
           <FaTrash />
         </Button>
       </td>
-      <td className='pl-5'>
-        <p>{`${id || 'unknown'} - ${name}`}</p>
+      <td className='pl-2 text-sm lg:pl-5 lg:text-md'>
+        <p className='overflow-hidden'>{name}</p>
         <a
           href={url}
           className='font-semibold hover:underline text-primary-dark'
@@ -39,8 +39,16 @@ function SavedItem({
           News Page
         </a>
       </td>
-      <td className='pl-5 pr-12'>{title}</td>
-      <td className='px-5 py-8'>{description}</td>
+      <td className='p-0 lg:pl-5 lg:pr-12'>
+        <p className='pl-1 overflow-hidden text-sm lg:text-md max-h-28'>
+          {title}
+        </p>
+      </td>
+      <td className='py-8 pl-2 lg:px-5 lg:w-14'>
+        <p className='overflow-hidden text-sm lg:text-md max-h-36'>
+          {description}
+        </p>
+      </td>
     </tr>
   );
 }
