@@ -29,11 +29,12 @@ function Footer() {
       <div className='self-center text-center'>
         <h3 className='mb-4 text-xl font-extrabold'>HotNews.</h3>
         <div className='flex justify-between text-3xl w-52'>
-          {iconlists.map(({ link, icon }) => (
+          {iconlists.map(({ name, link, icon }) => (
             <Button
               key={link}
               className='p-1 text-4xl transition-colors duration-300 ease-in-out rounded-full hover:text-gray-300 focus:text-gray-300 focus:ring-4 focus:ring-yellow-400 focus:outline-none'
               onClick={() => window.open(link, '_blank')}
+              ariaLabel={name}
             >
               {icon}
             </Button>
