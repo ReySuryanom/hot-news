@@ -7,7 +7,7 @@ function Home() {
   const [state] = useNewsContext();
   const { news, isLoading, query } = state;
 
-  if (isLoading) return <Loading />;
+  if (isLoading || news.length === 6) return <Loading />;
   else if (news.length === 0) return <Error />;
 
   // Membagi array menjadi 3 bagian, masing-masing untuk header, headlines dan aside.

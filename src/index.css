@@ -29,7 +29,7 @@ button {
 .special-list:hover::after,
 .special-list-active::after {
   content: '';
-  @apply absolute w-full transform -translate-x-1/2 border-b-2 border-white border-solid -bottom-1 lg:w-8/12 left-1/2;
+  @apply absolute w-4/12 transform -translate-x-1/2 border-b-2 border-white border-solid md:w-8/12 -bottom-1 left-1/2;
 }
 
 .heading-2 {

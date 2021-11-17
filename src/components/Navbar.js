@@ -16,10 +16,10 @@ export default function Navbar() {
   const [screenwidth, setScreenwidth] = useState(window.innerWidth);
 
   // For styling purposes
-  const ulStyle = `mt-3 text-xl lg:mt-0 lg:flex lg:space-x-16 ${
+  const ulStyle = `mt-3 text-xl md:flex md:mt-0 md:space-x-5 lg:space-x-16 ${
     isNavClosed ? 'hidden' : 'block'
   }`;
-  const navStyle = `px-12 py-5 text-white duration-200 ease-out transition-height lg:flex lg:items-center lg:justify-between bg-gradient-to-r from-primary-dark to-primary-light ${
+  const navStyle = `px-12 py-5 text-white duration-200 ease-out transition-height md:flex md:items-center md:justify-between bg-gradient-to-r from-primary-dark to-primary-light ${
     isNavClosed ? 'h-22' : 'h-50'
   }`;
 
@@ -51,7 +51,7 @@ export default function Navbar() {
       <div className='flex items-center justify-between'>
         <h1 className='text-2xl font-extrabold'>HotNews.</h1>
         <Button
-          className='lg:hidden'
+          className='md:hidden'
           onClick={() => setIsNavClosed(!isNavClosed)}
         >
           <FaBars size='1.5rem' />

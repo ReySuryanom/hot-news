@@ -24,6 +24,7 @@ module.exports = {
   },
   variants: {
     extend: {
+      display: ['last'],
       fontWeight: ['group-hover'],
       brightness: ['group-hover', 'hover'],
     },

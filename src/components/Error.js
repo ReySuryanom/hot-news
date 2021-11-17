@@ -5,7 +5,7 @@ function Error() {
   const [state] = useNewsContext();
 
   return (
-    <section className='w-full px-10 mb-16 text-center'>
+    <section className='w-full px-10 mt-16 mb-16 text-center md:mt-0'>
       <FaSadTear
         className='w-full text-9xl text-primary-dark'
         role='presentation'
