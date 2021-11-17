@@ -36,7 +36,7 @@ function SearchBox() {
     <section className='relative py-5 lg:py-16 bg-none'>
       <div className='relative w-10/12 h-auto mx-auto'>
         <input
-          className='min-w-full px-5 py-2 rounded-full shadow-md outline-none md:px-8 md:py-4'
+          className='min-w-full px-5 py-2 rounded-full shadow-md outline-none md:px-8 md:py-4 focus:ring-4 focus:ring-offset-4 focus:ring-yellow-400 focus:ring-offset-text-light'
           type='text'
           placeholder='Search News'
           ref={searchInput}
@@ -47,6 +47,7 @@ function SearchBox() {
         <Button
           className='absolute md:right-5 right-3 -top-0.5 md:top-1.5'
           onClick={setQuery}
+          tabIndex='-1'
         >
           <FaSearch className='text-md md:text-4xl text-primary-light' />
         </Button>

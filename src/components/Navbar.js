@@ -67,7 +67,11 @@ export default function Navbar() {
               className={`lg:inline hfidden special-list ${isPageActive}`}
               key={index}
             >
-              <Link to={route} onClick={() => toggleNavbar(index, name)}>
+              <Link
+                to={route}
+                className='px-2 py-0.5 outline-none focus:ring-4 focus:ring-yellow-400 focus:rounded-lg focus:ring-offset-4 focus:ring-offset-white'
+                onClick={() => toggleNavbar(index, name)}
+              >
                 {name}
               </Link>
             </li>

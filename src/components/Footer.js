@@ -27,12 +27,12 @@ function Footer() {
     <footer className={footerStyle}>
       <div className='self-center text-center'>
         <h4 className='mb-4 text-xl font-extrabold'>HotNews.</h4>
-        <div className='flex justify-between w-48 text-3xl'>
+        <div className='flex justify-between text-3xl w-52'>
           {iconlists.map(({ link, icon }) => (
             <a
               href={link}
               key={link}
-              className='text-4xl transition-colors duration-300 ease-in-out hover:text-gray-300 focus:text-gray-300'
+              className='p-1 text-4xl transition-colors duration-300 ease-in-out rounded-full hover:text-gray-300 focus:text-gray-300 focus:ring-4 focus:ring-yellow-400 focus:outline-none'
               target='_blank'
               rel='noreferrer'
             >
@@ -50,7 +50,7 @@ function Footer() {
                 <li key={query}>
                   <Link
                     to={`/search/${query}`}
-                    className='transition-colors duration-300 ease-in-out hover:text-gray-300 focus:text-gray-300'
+                    className='transition-colors duration-300 ease-in-out hover:text-gray-300 focus:outline-none focus:underline focus:text-yellow-400'
                     onClick={() => applyQuery(query)}
                   >
                     {query}

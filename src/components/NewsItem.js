@@ -12,7 +12,6 @@ import {
   faSearchStyle,
   imgStyle,
   justifyFixed,
-  specialStyle,
 } from '../utils/constants';
 
 /**
@@ -53,10 +52,14 @@ function NewsItem({
     dispatch({ type: ADD_TO_SAVED_NEWS, payload: newsItem });
   };
 
-  // Membuka halaman berita yang diklik user pada halaman baru
-  const openNewsSource = () => window.open(url, '_blank');
+  // Membuka halaman berita yang diklik atau ditekan enter oleh user ke halaman baru.
+  const openNewsSource = (event) => {
+    if (event.key === 'Enter' || event['type'] === 'click') {
+      window.open(url, '_blank');
+    }
+  };
 
-  // Mengecek list berita yang tersimpan untuk syling purpose
+  // Mengecek list berita yang tersimpan untuk syling purpose.
   const isNewsAlreadySaved = state.saved_news.some((item) => item.url === url)
     ? 'text-yellow-400'
     : 'text-white hover:text-yellow-400';
@@ -69,18 +72,25 @@ function NewsItem({
           <FaSearch className={faSearchStyle.style(type)} />
         </div>
         <Button
-          className='absolute top-0 right-0 rounded-bl-lg bg-primary-light'
+          className='absolute top-0 right-0 rounded-bl-lg bg-primary-light focus:outline-none focus:ring-4 focus:ring-offset-white focus:ring-yellow-400 focus:rounded-lg focus:ring-offset-2'
           onClick={toggleBookmark}
         >
           <FaBookmark size={size} className={isNewsAlreadySaved} />
         </Button>
       </div>
       <dl
-        className={`${dlStyle[type]}${justifyFixed[type]}${specialStyle[type]}`}
-        role='button'
+        className={`${dlStyle[type]}${justifyFixed[type]}`}
         onClick={openNewsSource}
+        title={title}
+        role='button'
       >
-        <dt className={dtStyle.style(type)}>{truncatingText(title, length)}</dt>
+        <dt
+          className={dtStyle.style(type)}
+          onKeyPress={openNewsSource}
+          tabIndex='0'
+        >
+          {truncatingText(title, length)}
+        </dt>
         <dd className='text-sm font-bold text-primary-dark'>
           {id || 'unknown'}
           <span className='font-medium text-text-gray'> - {name}</span>

@@ -21,7 +21,7 @@ function SavedItem({
     <tr className={trStyle}>
       <td>
         <Button
-          className='my-3 ml-0 text-red-500 transition duration-500 ease-in-out lg:ml-4 group-hover:text-red-700'
+          className='my-3 ml-0 text-red-500 transition duration-500 ease-in-out rounded-lg outline-none lg:ml-4 group-hover:text-red-700 focus:ring-4 focus:ring-offset-4 focus:ring-yellow-400 group-focus:bg-yellow-400 focus:ring-offset-white'
           onClick={() => deleteNews(url)}
         >
           <FaTrash />
@@ -31,7 +31,7 @@ function SavedItem({
         <p className='overflow-hidden'>{name}</p>
         <a
           href={url}
-          className='font-semibold hover:underline text-primary-dark'
+          className='font-semibold outline-none hover:underline text-primary-dark focus:underline focus:text-yellow-400'
           target='_blank'
           rel='noreferrer'
           role='button'

@@ -24,9 +24,12 @@ module.exports = {
   },
   variants: {
     extend: {
+      borderWidth: ['focus'],
+      backgroundColor: ['group-focus'],
+      borderRadius: ['focus'],
+      brightness: ['group-hover', 'hover'],
       display: ['last'],
       fontWeight: ['group-hover'],
-      brightness: ['group-hover', 'hover'],
     },
   },
   plugins: [],

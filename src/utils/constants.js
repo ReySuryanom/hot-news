@@ -64,13 +64,13 @@ export const articleStyle = {
 export const div1Style = {
   aside: 'w-3/6 mb-0.5 relative ',
   search: 'w-9/12 lg:w-5/12 h-32 md:h-40 lg:h-44 mb-0.5 relative ',
-  headlines: 'relative overflow-hidden',
-  default: 'overflow-hidden h-44 lg:h-32 mb-0.5 relative ',
+  headlines: 'relative',
+  default: 'h-44 lg:h-32 mb-0.5 relative ',
 };
 export const div2Style = {
   aside: 'w-full mb-0.5 relative ',
   search: 'overflow-hidden w-full h-32 md:h-40 lg:h-44 mb-0.5 relative ',
-  headlines: 'relative overflow-hidden',
+  headlines: 'relative',
   default: 'overflow-hidden h-44 lg:h-32 mb-0.5 relative ',
 };
 export const dlStyle = {
@@ -81,11 +81,7 @@ export const dlStyle = {
 };
 export const justifyFixed = {
   aside: ' justify-between ',
-  search: ' justify-center w-full pl-4  bg-text-light lg:pl-10',
-  default: '',
-};
-export const specialStyle = {
-  search: ' h-32 lg:h-44',
+  search: ' justify-center w-full pl-4 h-32 lg:h-44 bg-text-light lg:pl-10',
   default: '',
 };
 
@@ -100,7 +96,7 @@ export const faSearchStyle = {
 export const dtStyle = {
   style: (type) => {
     const style = type === 'search' ? 'text-md lg:text-xl' : 'text-sm';
-    return `font-medium ${style} group-hover:text-black transition duration-300 ease-in-out text-gray-800`;
+    return `font-medium ${style} group-hover:text-black transition duration-300 ease-in-out text-gray-800 focus:outline-none focus:underline focus:text-yellow-500`;
   },
   default: '',
 };
