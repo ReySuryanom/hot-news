@@ -47,6 +47,7 @@ function SearchBox() {
         <Button
           className='absolute md:right-5 right-3 -top-0.5 md:top-1.5'
           onClick={setQuery}
+          ariaLabel='Search'
           tabIndex='-1'
         >
           <FaSearch className='text-md md:text-4xl text-primary-light' />

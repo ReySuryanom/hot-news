@@ -53,6 +53,7 @@ export default function Navbar() {
         <Button
           className='md:hidden'
           onClick={() => setIsNavClosed(!isNavClosed)}
+          ariaLabel='Navbar Toggler'
         >
           <FaBars size='1.5rem' />
         </Button>

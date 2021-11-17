@@ -6,6 +6,7 @@ import {
 import { useNewsContext } from '../context/newsContext';
 import { footerlists, iconlists } from '../utils/constants';
 import { Link } from 'react-router-dom';
+import { Button } from '.';
 
 function Footer() {
   const [state, dispatch] = useNewsContext();
@@ -26,18 +27,16 @@ function Footer() {
   return (
     <footer className={footerStyle}>
       <div className='self-center text-center'>
-        <h4 className='mb-4 text-xl font-extrabold'>HotNews.</h4>
+        <h3 className='mb-4 text-xl font-extrabold'>HotNews.</h3>
         <div className='flex justify-between text-3xl w-52'>
           {iconlists.map(({ link, icon }) => (
-            <a
-              href={link}
+            <Button
               key={link}
               className='p-1 text-4xl transition-colors duration-300 ease-in-out rounded-full hover:text-gray-300 focus:text-gray-300 focus:ring-4 focus:ring-yellow-400 focus:outline-none'
-              target='_blank'
-              rel='noreferrer'
+              onClick={() => window.open(link, '_blank')}
             >
               {icon}
-            </a>
+            </Button>
           ))}
         </div>
       </div>

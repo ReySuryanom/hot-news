@@ -17,8 +17,8 @@ button > * {
 }
 
 button {
-  min-width: 44px;
-  min-height: 44px;
+  min-width: 48px;
+  min-height: 48px;
   @apply inline-block;
 }
 
