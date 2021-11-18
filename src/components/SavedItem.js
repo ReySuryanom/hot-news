@@ -7,7 +7,7 @@ import { Button } from '.';
  */
 function SavedItem({
   index,
-  source: { id, name },
+  source: { name },
   title,
   description,
   url,
